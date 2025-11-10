@@ -15,7 +15,7 @@ export interface UserLogin {
 export interface Quest {
   id?: number;
   pergunta: string;
-  id_Repost: number;
+  answer_id: number;
 }
 
 export interface Answer {

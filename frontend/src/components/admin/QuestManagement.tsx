@@ -29,7 +29,7 @@ export const QuestManagement = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [formData, setFormData] = useState<Quest>({
     pergunta: "",
-    id_Repost: 0,
+    answer_id: 0,
   });
   const { toast } = useToast();
   const queryClient = useQueryClient();
@@ -44,7 +44,7 @@ export const QuestManagement = () => {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["quests"] });
       setIsOpen(false);
-      setFormData({ pergunta: "", id_Repost: 0 });
+      setFormData({ pergunta: "", answer_id: 0 });
       toast({
         title: "Sucesso!",
         description: "Questão criada com sucesso.",
@@ -112,15 +112,15 @@ export const QuestManagement = () => {
                   />
                 </div>
                 <div>
-                  <Label htmlFor="id_Repost">ID da Resposta Correta</Label>
+                  <Label htmlFor="answer_id">ID da Resposta Correta</Label>
                   <Input
-                    id="id_Repost"
+                    id="answer_id"
                     type="number"
-                    value={formData.id_Repost}
+                    value={formData.answer_id}
                     onChange={(e) =>
                       setFormData({
                         ...formData,
-                        id_Repost: parseInt(e.target.value),
+                        answer_id: parseInt(e.target.value),
                       })
                     }
                     required
@@ -152,7 +152,7 @@ export const QuestManagement = () => {
                 <TableRow key={quest.id}>
                   <TableCell>{quest.id}</TableCell>
                   <TableCell>{quest.pergunta}</TableCell>
-                  <TableCell>{quest.id_Repost}</TableCell>
+                  <TableCell>{quest.answer_id}</TableCell>
                   <TableCell className="text-right">
                     <Button
                       variant="destructive"
