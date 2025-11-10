@@ -1,5 +1,6 @@
 package com.game_matematica.game_matematica.control;
 
+import com.game_matematica.game_matematica.dto.LoginRequest;
 import com.game_matematica.game_matematica.model.UserModel;
 import com.game_matematica.game_matematica.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,6 +41,13 @@ public class UserControl {
     public ResponseEntity<UserModel> criarUser(@RequestBody UserModel userModel) {
         UserModel novoUser = userService.criarUser(userModel);
         return ResponseEntity.status(HttpStatus.CREATED).body(novoUser);
+    }
+
+    // Fazer login
+    @PostMapping("/login")
+    public ResponseEntity<UserModel> login(@RequestBody LoginRequest user) {
+        UserModel authenticatedUser = userService.login(user);
+        return ResponseEntity.status(HttpStatus.OK).body(authenticatedUser);
     }
 
     // Deletar usuário por ID
