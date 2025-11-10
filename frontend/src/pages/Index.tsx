@@ -167,6 +167,16 @@ const Index = () => {
           <p className="text-sm text-muted-foreground mt-2">
             Alinhado com o ODS 4 - Educação de Qualidade da ONU
           </p>
+          <div className="mt-4">
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => navigate("/admin")}
+              className="text-muted-foreground hover:text-foreground"
+            >
+              Acesso Administrativo
+            </Button>
+          </div>
         </div>
       </footer>
     </div>
