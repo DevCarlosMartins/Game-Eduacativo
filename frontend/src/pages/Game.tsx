@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "../components/ui/button";
 import { GameCard } from "../components/GameCard";
-import { questApi, answerApi } from "../lib/api";
+import { questApi, answerApi, userApi } from "../lib/api";
 import type { Quest, Answer } from "../lib/api";
 import { Loader2, Trophy, Home, LogOut } from "lucide-react";
 import { toast } from "sonner";
@@ -23,8 +23,16 @@ const Game = () => {
   }, []);
 
   const checkUser = async () => {
-    // const { data: { session } } = await supabase.auth.getSession();
-    // setUser(session?.user || null);
+    try {
+      const currentUser = localStorage.getItem("currentUser");
+      if (currentUser) {
+        const userData = await userApi.getById(JSON.parse(currentUser).id);
+        setUser(userData || null);
+      }
+    } catch (error) {
+      console.error("Erro ao verificar usuário:", error);
+      setUser(null);
+    }
   };
 
   const loadGameData = async () => {
@@ -34,10 +42,10 @@ const Game = () => {
         questApi.getAll(),
         answerApi.getAll(),
       ]);
-      
+
       setQuests(questsData);
       setAnswers(answersData);
-      
+
       if (questsData.length === 0) {
         toast.error("Nenhuma questão disponível no momento");
       }
@@ -66,6 +74,7 @@ const Game = () => {
       toast.success(`Jogo finalizado! Pontuação: ${score}/${quests.length}`, {
         icon: "🎉",
       });
+      navigate("/result", { state: { score, totalAttempts, totalQuestions: quests.length } });
       setCurrentQuestIndex(0);
       setScore(0);
       setTotalAttempts(0);
@@ -73,7 +82,21 @@ const Game = () => {
   };
 
   const handleLogout = async () => {
-    // await supabase.auth.signOut();
+    try {
+      const userEmail = localStorage.getItem("userEmail");
+      if (userEmail) {
+        const userData = await userApi.getAll();
+        const loggedInUser = userData.find(user => user.email === userEmail);
+        if (loggedInUser) {
+          await userApi.delete(loggedInUser.id!);
+        }
+      }
+      localStorage.removeItem("currentUser");
+      toast.success("Logout realizado com sucesso!");
+    } catch (error) {
+      console.error("Erro ao realizar logout:", error);
+      toast.error("Erro ao realizar logout. Tente novamente.");
+    }
     navigate("/");
   };
 
@@ -112,7 +135,6 @@ const Game = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
       <header className="bg-card border-b-2 border-border shadow-soft">
         <div className="container mx-auto px-4 py-4">
           <div className="flex justify-between items-center">
@@ -121,7 +143,7 @@ const Game = () => {
                 🎯 Matemática em Ação
               </h1>
             </div>
-            
+
             <div className="flex items-center gap-4">
               <div className="hidden md:flex items-center gap-2 bg-gradient-primary text-white px-6 py-2 rounded-full">
                 <Trophy className="w-5 h-5" />
@@ -129,8 +151,8 @@ const Game = () => {
                   {score} / {quests.length}
                 </span>
               </div>
-              
-              {user && (
+
+              {user !== null && (
                 <Button
                   variant="outline"
                   size="sm"
@@ -143,8 +165,7 @@ const Game = () => {
               )}
             </div>
           </div>
-          
-          {/* Mobile Score */}
+
           <div className="md:hidden mt-3 flex justify-center">
             <div className="flex items-center gap-2 bg-gradient-primary text-white px-6 py-2 rounded-full">
               <Trophy className="w-5 h-5" />
@@ -156,7 +177,6 @@ const Game = () => {
         </div>
       </header>
 
-      {/* Main Content */}
       <main className="container mx-auto px-4 py-8">
         <div className="mb-6 text-center">
           <p className="text-lg text-muted-foreground">

@@ -27,9 +27,9 @@ import { useToast } from "../../hooks/use-toast";
 export const UserManagement = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [formData, setFormData] = useState<User>({
-    nome: "",
+    name: "",
     email: "",
-    senha: "",
+    password: "",
   });
   const { toast } = useToast();
   const queryClient = useQueryClient();
@@ -44,7 +44,7 @@ export const UserManagement = () => {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["users"] });
       setIsOpen(false);
-      setFormData({ nome: "", email: "", senha: "" });
+      setFormData({ name: "", email: "", password: "" });
       toast({
         title: "Sucesso!",
         description: "Usuário criado com sucesso.",
@@ -100,12 +100,12 @@ export const UserManagement = () => {
               </DialogHeader>
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
-                  <Label htmlFor="nome">Nome</Label>
+                  <Label htmlFor="name">name</Label>
                   <Input
-                    id="nome"
-                    value={formData.nome}
+                    id="name"
+                    value={formData.name}
                     onChange={(e) =>
-                      setFormData({ ...formData, nome: e.target.value })
+                      setFormData({ ...formData, name: e.target.value })
                     }
                     required
                   />
@@ -123,13 +123,13 @@ export const UserManagement = () => {
                   />
                 </div>
                 <div>
-                  <Label htmlFor="senha">Senha</Label>
+                  <Label htmlFor="password">password</Label>
                   <Input
-                    id="senha"
+                    id="password"
                     type="password"
-                    value={formData.senha}
+                    value={formData.password}
                     onChange={(e) =>
-                      setFormData({ ...formData, senha: e.target.value })
+                      setFormData({ ...formData, password: e.target.value })
                     }
                     required
                   />
@@ -150,7 +150,7 @@ export const UserManagement = () => {
             <TableHeader>
               <TableRow>
                 <TableHead>ID</TableHead>
-                <TableHead>Nome</TableHead>
+                <TableHead>name</TableHead>
                 <TableHead>Email</TableHead>
                 <TableHead className="text-right">Ações</TableHead>
               </TableRow>
@@ -159,7 +159,7 @@ export const UserManagement = () => {
               {users?.map((user) => (
                 <TableRow key={user.id}>
                   <TableCell>{user.id}</TableCell>
-                  <TableCell>{user.nome}</TableCell>
+                  <TableCell>{user.name}</TableCell>
                   <TableCell>{user.email}</TableCell>
                   <TableCell className="text-right">
                     <Button

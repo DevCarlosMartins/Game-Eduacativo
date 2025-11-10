@@ -48,7 +48,7 @@ const Auth = () => {
 
     setLoading(true);
     try {
-      const user = { nome: name, email, senha: password };
+      const user = { name, email, password };
       await userApi.create(user);
 
       toast.success("Conta criada com sucesso! Você já pode fazer login.");
@@ -72,7 +72,7 @@ const Auth = () => {
 
     setLoading(true);
     try {
-      const user = { email, senha: password };
+      const user = { email, password };
       const response = await userApi.login(user);
 
       localStorage.setItem('currentUser', JSON.stringify(response));

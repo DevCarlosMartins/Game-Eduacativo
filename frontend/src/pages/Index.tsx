@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "../components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../components/ui/card";
 import { Brain, Users, Trophy, Sparkles } from "lucide-react";
-import heroImage from "../assets/hero-math.jpg";
+import matematicaEmAcao from "../assets/matematica-em-acao.png";
 
 const Index = () => {
   const navigate = useNavigate();
@@ -31,7 +31,6 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-primary/5 to-secondary/5">
-      {/* Hero Section */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-primary/10 to-transparent" />
         
@@ -39,7 +38,7 @@ const Index = () => {
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div className="text-center md:text-left space-y-6">
               <div className="inline-block bg-gradient-primary text-white px-6 py-2 rounded-full font-bold text-sm md:text-base shadow-soft">
-                🎯 Educação de Qualidade - ODS 4
+                🎯 Matemática em Ação - Educação de Qualidade Para Todos
               </div>
               
               <h1 className="text-4xl md:text-6xl font-display font-bold text-foreground leading-tight">
@@ -77,16 +76,15 @@ const Index = () => {
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-secondary opacity-20 blur-3xl rounded-full" />
               <img
-                src={heroImage}
+                src={matematicaEmAcao}
                 alt="Crianças aprendendo matemática de forma divertida"
-                className="relative rounded-3xl shadow-strong w-full h-auto"
+                className="relative rounded-3xl shadow-strong w-full h-auto max-h-[600px] object-cover"
               />
             </div>
           </div>
         </div>
       </section>
 
-      {/* Features Section */}
       <section className="py-16 md:py-24 bg-card/50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
@@ -123,7 +121,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
       <section className="py-16 md:py-24">
         <div className="container mx-auto px-4">
           <Card className="bg-gradient-secondary text-white shadow-strong border-0">
@@ -158,14 +155,10 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Footer */}
       <footer className="bg-card border-t-2 border-border py-8">
         <div className="container mx-auto px-4 text-center">
           <p className="text-muted-foreground">
-            © 2025 Matemática em Ação - Educação de Qualidade para Todos
-          </p>
-          <p className="text-sm text-muted-foreground mt-2">
-            Alinhado com o ODS 4 - Educação de Qualidade da ONU
+            © 2025 SoftKoe Games - Matemática em Ação
           </p>
           <div className="mt-4">
             <Button

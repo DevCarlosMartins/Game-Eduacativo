@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "./ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card";
 import type { Quest, Answer } from "../lib/api";
@@ -18,13 +18,16 @@ export const GameCard = ({ quest, answers, onAnswer }: GameCardProps) => {
   const [isCorrect, setIsCorrect] = useState(false);
   const [hint, setHint] = useState<string | null>(null);
 
+  useEffect(() => {
+    resetQuestion();
+  }, [quest]);
+
   const handleSubmit = () => {
     const correct = selectedAnswer === quest.id_Repost;
     setIsCorrect(correct);
     setShowResult(true);
     
     if (!correct && selectedAnswer) {
-      // Aqui você pode adicionar lógica para buscar dicas do backend
       // Por enquanto, uma dica genérica
       const wrongAnswer = answers.find(a => a.id === selectedAnswer);
       if (wrongAnswer) {
@@ -84,7 +87,7 @@ export const GameCard = ({ quest, answers, onAnswer }: GameCardProps) => {
               className={cn(
                 "h-20 text-2xl font-bold transition-all duration-300",
                 selectedAnswer === answer.id && !showResult && "ring-4 ring-primary scale-105",
-                showResult && answer.id === quest.id_Repost && "bg-success text-success-foreground border-success",
+                showResult && selectedAnswer === answer.id && answer.id === quest.id_Repost && "bg-success text-success-foreground border-success",
                 showResult && selectedAnswer === answer.id && answer.id !== quest.id_Repost && "bg-error text-error-foreground border-error"
               )}
               onClick={() => handleAnswerClick(answer.id!)}
@@ -142,14 +145,15 @@ export const GameCard = ({ quest, answers, onAnswer }: GameCardProps) => {
               </div>
             )}
 
-            <Button
+            {
+            !isCorrect && <Button
               onClick={resetQuestion}
               size="lg"
               variant="outline"
               className="w-full text-xl font-bold"
             >
               Tentar Novamente
-            </Button>
+            </Button>}
           </div>
         )}
       </CardContent>
