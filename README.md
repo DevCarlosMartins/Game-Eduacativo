@@ -1,5 +1,5 @@
 
-# Documentação da API - Game Matemática
+# Documentação da API - Matemática em ação
 
 ## Visão Geral
 Esta API gerencia entidades relacionadas ao jogo de matemática, permitindo operações de CRUD (Criar, Ler, Atualizar e Deletar) para **Usuários**, **Quests (Perguntas)** e **Answers (Respostas)**.
