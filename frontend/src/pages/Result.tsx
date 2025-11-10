@@ -1,5 +1,4 @@
 import { useNavigate, useLocation } from "react-router-dom";
-// Caminhos corrigidos para usar a navegação relativa (../)
 import { Button } from "../components/ui/button";
 import {
   Card,
@@ -15,7 +14,6 @@ const Result = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // Garante que o estado exista, ou usa valores padrão
   const [score, setScore] = useState(0);
   const [total, setTotal] = useState(0);
   const [message, setMessage] = useState("");
@@ -27,7 +25,6 @@ const Result = () => {
       setScore(score);
       setTotal(totalQuestions);
 
-      // Define a mensagem com base na pontuação
       const percentage = totalQuestions > 0 ? (score / totalQuestions) * 100 : 0;
 
       if (percentage === 100) {
@@ -44,13 +41,11 @@ const Result = () => {
         setEmoji("😊");
       }
     } else {
-      // Se o usuário acessar a URL /result diretamente, redireciona
       navigate("/");
     }
   }, [location.state, navigate]);
 
   const handleRetry = () => {
-    // Navega de volta para o jogo. O Game.tsx já reseta o estado no useEffect.
     navigate("/game");
   };
 
@@ -58,7 +53,6 @@ const Result = () => {
     navigate("/");
   };
 
-  // Evita renderizar a página se o estado ainda não foi processado
   if (!location.state) {
     return null;
   }
