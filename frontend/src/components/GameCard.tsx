@@ -23,7 +23,7 @@ export const GameCard = ({ quest, answers, onAnswer }: GameCardProps) => {
   }, [quest]);
 
   const handleSubmit = () => {
-    const correct = selectedAnswer === quest.id_Repost;
+    const correct = selectedAnswer === quest.answer_id;
     setIsCorrect(correct);
     setShowResult(true);
     
@@ -87,8 +87,8 @@ export const GameCard = ({ quest, answers, onAnswer }: GameCardProps) => {
               className={cn(
                 "h-20 text-2xl font-bold transition-all duration-300",
                 selectedAnswer === answer.id && !showResult && "ring-4 ring-primary scale-105",
-                showResult && selectedAnswer === answer.id && answer.id === quest.id_Repost && "bg-success text-success-foreground border-success",
-                showResult && selectedAnswer === answer.id && answer.id !== quest.id_Repost && "bg-error text-error-foreground border-error"
+                showResult && selectedAnswer === answer.id && answer.id === quest.answer_id && "bg-success text-success-foreground border-success",
+                showResult && selectedAnswer === answer.id && answer.id !== quest.answer_id && "bg-error text-error-foreground border-error"
               )}
               onClick={() => handleAnswerClick(answer.id!)}
               disabled={showResult}
