@@ -1,0 +1,17 @@
+com\game_matematica\game_matematica\SecurityConfig.class
+com\game_matematica\game_matematica\repository\AnswersRepository.class
+com\game_matematica\game_matematica\model\User.class
+com\game_matematica\game_matematica\CorsConfig$1.class
+com\game_matematica\game_matematica\repository\QuestRepositoy.class
+com\game_matematica\game_matematica\model\Quest.class
+com\game_matematica\game_matematica\controller\UserController.class
+com\game_matematica\game_matematica\service\UserService.class
+com\game_matematica\game_matematica\controller\QuestController.class
+com\game_matematica\game_matematica\service\AnswersService.class
+com\game_matematica\game_matematica\controller\AnswersController.class
+com\game_matematica\game_matematica\CorsConfig.class
+com\game_matematica\game_matematica\service\QuestService.class
+com\game_matematica\game_matematica\repository\UserRepository.class
+com\game_matematica\game_matematica\dto\LoginRequest.class
+com\game_matematica\game_matematica\GameMatematicaApplication.class
+com\game_matematica\game_matematica\model\Answer.class

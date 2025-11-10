@@ -1,0 +1,16 @@
+C:\Users\Lokom\Documents\cesu\aep\Game-Eduacativo\backend\src\main\java\com\game_matematica\game_matematica\controller\AnswersController.java
+C:\Users\Lokom\Documents\cesu\aep\Game-Eduacativo\backend\src\main\java\com\game_matematica\game_matematica\controller\QuestController.java
+C:\Users\Lokom\Documents\cesu\aep\Game-Eduacativo\backend\src\main\java\com\game_matematica\game_matematica\controller\UserController.java
+C:\Users\Lokom\Documents\cesu\aep\Game-Eduacativo\backend\src\main\java\com\game_matematica\game_matematica\CorsConfig.java
+C:\Users\Lokom\Documents\cesu\aep\Game-Eduacativo\backend\src\main\java\com\game_matematica\game_matematica\dto\LoginRequest.java
+C:\Users\Lokom\Documents\cesu\aep\Game-Eduacativo\backend\src\main\java\com\game_matematica\game_matematica\GameMatematicaApplication.java
+C:\Users\Lokom\Documents\cesu\aep\Game-Eduacativo\backend\src\main\java\com\game_matematica\game_matematica\model\Answer.java
+C:\Users\Lokom\Documents\cesu\aep\Game-Eduacativo\backend\src\main\java\com\game_matematica\game_matematica\model\Quest.java
+C:\Users\Lokom\Documents\cesu\aep\Game-Eduacativo\backend\src\main\java\com\game_matematica\game_matematica\model\User.java
+C:\Users\Lokom\Documents\cesu\aep\Game-Eduacativo\backend\src\main\java\com\game_matematica\game_matematica\repository\AnswersRepository.java
+C:\Users\Lokom\Documents\cesu\aep\Game-Eduacativo\backend\src\main\java\com\game_matematica\game_matematica\repository\QuestRepositoy.java
+C:\Users\Lokom\Documents\cesu\aep\Game-Eduacativo\backend\src\main\java\com\game_matematica\game_matematica\repository\UserRepository.java
+C:\Users\Lokom\Documents\cesu\aep\Game-Eduacativo\backend\src\main\java\com\game_matematica\game_matematica\SecurityConfig.java
+C:\Users\Lokom\Documents\cesu\aep\Game-Eduacativo\backend\src\main\java\com\game_matematica\game_matematica\service\AnswersService.java
+C:\Users\Lokom\Documents\cesu\aep\Game-Eduacativo\backend\src\main\java\com\game_matematica\game_matematica\service\QuestService.java
+C:\Users\Lokom\Documents\cesu\aep\Game-Eduacativo\backend\src\main\java\com\game_matematica\game_matematica\service\UserService.java
