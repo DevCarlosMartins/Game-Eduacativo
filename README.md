@@ -1,147 +1,88 @@
-
-# Documentação da API - Matemática em ação
-
-## Visão Geral
-Esta API gerencia entidades relacionadas ao jogo de matemática, permitindo operações de CRUD (Criar, Ler, Atualizar e Deletar) para **Usuários**, **Quests (Perguntas)** e **Answers (Respostas)**.
+# 🎮 Matemática em Ação 🚀  
+**Onde aprender matemática se torna uma aventura!**
 
 ---
 
-## Estrutura de Endpoints
+## 📘 1. O que é o "Matemática em Ação"?
 
-### 1. Usuários (`/users`)
-Gerencia os dados dos usuários do sistema.
+**Matemática em Ação** é um **jogo educacional web** criado para transformar o aprendizado de matemática nas séries iniciais em uma experiência divertida e interativa.  
 
-#### **GET /users**
-Retorna a lista de todos os usuários.
+Sabemos que muitos alunos enfrentam dificuldades e falta de interesse pela matemática — por isso, o projeto adota uma abordagem **lúdica**, com **cores vibrantes** e **atividades envolventes**, tornando o aprendizado mais leve e estimulante.
 
-#### **GET /users/{id}**
-Retorna os dados de um usuário específico.
-
-#### **POST /users**
-Cria um novo usuário.
-```json
-{
-  "nome": "João Silva",
-  "email": "joao@email.com",
-  "senha": "123456"
-}
-```
-
-#### **DELETE /users/{id}**
-Remove um usuário existente.
+> “Aprender matemática nunca foi tão divertido!”
 
 ---
 
-### 2. Quests (`/quests`)
-Gerencia as perguntas do jogo.
+## 🎯 2. Objetivo do Projeto
 
-#### **GET /quests**
-Retorna todas as quests cadastradas.
+Alinhado ao **ODS 4 - Educação de Qualidade**, o objetivo é desenvolver um **jogo web simples e educativo**, com desafios e dicas rápidas que ajudam os alunos a fixar conceitos matemáticos básicos de forma **fácil e memorável**.  
 
-#### **GET /quests/{id}**
-Busca uma quest específica pelo ID.
-
-#### **POST /quests**
-Cria uma nova quest.
-```json
-{
-  "pergunta": "Quanto é 5 + 7?",
-  "id_Repost": 1
-}
-```
-
-#### **DELETE /quests/{id}**
-Remove uma quest específica.
+Queremos mudar a percepção de que a matemática é “difícil” ou “chata”, mostrando que ela pode ser **acessível, colorida e divertida**.
 
 ---
 
-### 3. Answers (`/answers`)
-Gerencia as respostas das quests.
+## 🧩 3. Funcionalidades Principais
 
-#### **GET /answers**
-Lista todas as respostas disponíveis.
+- 👤 **Cadastro e Login de Usuários:**  
+  Criação de perfis individuais e (futuramente) acompanhamento de progresso.
 
-#### **GET /answers/{id}**
-Busca uma resposta específica.
+- ➕ **Desafios Interativos:**  
+  Questões de soma, subtração e outras operações básicas com feedback visual.
 
-#### **POST /answers**
-Cria uma nova resposta.
-```json
-{
-  "idQuest": 1,
-  "desc": "12"
-}
-```
+- ⚡ **Feedback Imediato:**  
+  O aluno sabe instantaneamente se acertou ou errou.
 
-#### **DELETE /answers/{id}**
-Exclui uma resposta existente.
+- 💡 **Dicas e Explicações:**  
+  Após cada tentativa, o sistema oferece explicações curtas e reforços de aprendizado.
+
+- 🛠️ **Painel Administrativo:**  
+  Área restrita onde administradores podem **criar, editar e remover** questões, respostas e gerenciar usuários.
 
 ---
 
-## Estrutura dos Modelos
+## 🏗️ 4. Arquitetura e Tecnologias
 
-### **UserModel**
-| Campo | Tipo | Descrição |
-|--------|------|-----------|
-| `id` | Long | Identificador do usuário |
-| `nome` | String | Nome do usuário |
-| `email` | String | E-mail do usuário |
-| `senha` | String | Senha criptografada |
+O projeto segue uma arquitetura **cliente-servidor moderna**, separando responsabilidades entre frontend e backend.
 
-### **QuestModel**
-| Campo | Tipo | Descrição |
-|--------|------|-----------|
-| `id` | Long | Identificador da questão |
-| `pergunta` | String | Enunciado da questão |
-| `id_Repost` | int | ID da resposta correta |
+### ⚙️ Backend (API)
 
-### **AnswersModel**
-| Campo | Tipo | Descrição |
-|--------|------|-----------|
-| `id` | Long | Identificador da resposta |
-| `idQuest` | int | ID da questão associada |
-| `desc` | String | Texto da resposta |
+- **Java:** Lógica de negócios, autenticação e gerenciamento de dados, seguindo princípios de **Orientação a Objetos**.  
+- **API REST:** Endpoints RESTful para integração com o frontend.  
+- **Banco de Dados Relacional:**  
+  Utiliza **H2** para armazenar usuários, questões e histórico de tentativas, persistindo os dados em um arquivo texto diretamente na máquina (futuramente, modificaremos para armazenamento em nuvem).
+
+### 💻 Frontend (Aplicação Web)
+
+- **React:** Construção de uma **Single Page Application (SPA)** moderna e responsiva.  
+- **React Query:** Gerenciamento eficiente de estado e comunicação com a API Java.  
+- **Design Vibrante:**  
+  Layout com **cores primárias**, **fontes legíveis** e **elementos grandes**, projetado para o público infantil.
 
 ---
 
-## Estrutura de Pastas (src/main/java/com/game_matematica/game_matematica)
-```
-├── control
-│   ├── UserControl.java
-│   ├── QuestControl.java
-│   └── AnswersControl.java
-│
-├── model
-│   ├── UserModel.java
-│   ├── QuestModel.java
-│   └── AnswersModel.java
-│
-├── repository
-│   ├── UserRepository.java
-│   ├── QuestRepository.java
-│   └── AnswersRepository.java
-│
-└── service
-    ├── UserService.java
-    ├── QuestService.java
-    └── AnswersService.java
-```
+## 📋 5. Gerenciamento de Projeto
+
+- 🧭 **GitHub:** Código-fonte versionado e disponível publicamente.  
+- 🧱 **JIRA:** Organização de tarefas, *sprints* e documentação (ex.: Diagramas de Caso de Uso e de Classes).
 
 ---
 
-## Respostas HTTP
-| Código | Descrição |
-|--------|------------|
-| `200 OK` | Operação realizada com sucesso |
-| `201 CREATED` | Recurso criado com sucesso |
-| `204 NO CONTENT` | Recurso removido com sucesso |
-| `404 NOT FOUND` | Recurso não encontrado |
+## 🧠 6. Considerações Finais
+
+O **Matemática em Ação** une **diversão e aprendizado**, oferecendo uma plataforma acessível e envolvente que apoia o **ODS 4 - Educação de Qualidade**.  
+
+Além de promover o raciocínio lógico e a autoconfiança dos alunos, o projeto também serve como um **exemplo sólido de integração entre Java e React**, demonstrando boas práticas de desenvolvimento full-stack.
+
+> ✨ *Educar brincando é o primeiro passo para aprender com prazer!*
 
 ---
 
-## Tecnologias Utilizadas
-- Java 17+
-- Spring Boot 3.x
-- Spring Data JPA
-- Jakarta Persistence (JPA)
-- Banco de dados relacional (MySQL, PostgreSQL ou H2)
+### 📎 Tecnologias Principais
+| Categoria | Ferramentas |
+|------------|-------------|
+| **Frontend** | React, React Query, CSS |
+| **Backend** | Java, Spring Boot, REST API |
+| **Banco de Dados** | H2 |
+| **Gerenciamento** | GitHub, JIRA |
+
+---
