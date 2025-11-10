@@ -1,6 +1,6 @@
-package com.game_matematica.game_matematica.control;
+package com.game_matematica.game_matematica.controller;
 
-import com.game_matematica.game_matematica.model.QuestModel;
+import com.game_matematica.game_matematica.model.Quest;
 import com.game_matematica.game_matematica.service.QuestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -12,22 +12,26 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping(path = "/quests")
-public class QuestControl {
+public class QuestController {
 
     @Autowired
-    private QuestService questService;
+    private final QuestService questService;
+
+    public QuestController(QuestService questService) {
+        this.questService = questService;
+    }
 
     // Listar todas as quests
     @GetMapping
-    public ResponseEntity<List<QuestModel>> listarQuests() {
-        List<QuestModel> quests = questService.listarQuests();
+    public ResponseEntity<List<Quest>> listarQuests() {
+        List<Quest> quests = questService.listarQuests();
         return ResponseEntity.ok(quests);
     }
 
     // Buscar quest por ID
     @GetMapping("/{id}")
     public ResponseEntity<?> listarQuestId(@PathVariable Long id) {
-        Optional<QuestModel> opt = questService.listarQuestId(id);
+        Optional<Quest> opt = questService.listarQuestId(id);
         if (opt.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
                     .body("Quest não encontrada");
@@ -37,15 +41,15 @@ public class QuestControl {
 
     // Criar nova quest
     @PostMapping
-    public ResponseEntity<QuestModel> criarQuest(@RequestBody QuestModel questModel) {
-        QuestModel novaQuest = questService.criarQuest(questModel);
+    public ResponseEntity<Quest> criarQuest(@RequestBody Quest quest) {
+        Quest novaQuest = questService.criarQuest(quest);
         return ResponseEntity.status(HttpStatus.CREATED).body(novaQuest);
     }
 
     // Deletar quest por ID
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteQuest(@PathVariable Long id) {
-        Optional<QuestModel> opt = questService.listarQuestId(id);
+        Optional<Quest> opt = questService.listarQuestId(id);
         if (opt.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
                     .body("Quest não encontrada");

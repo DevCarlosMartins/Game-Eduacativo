@@ -1,8 +1,8 @@
 package com.game_matematica.game_matematica.repository;
 
-import com.game_matematica.game_matematica.model.QuestModel;
+import com.game_matematica.game_matematica.model.Quest;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface QuestRepositoy extends JpaRepository<QuestModel,Long> {
+public interface QuestRepositoy extends JpaRepository<Quest,Long> {
 
 }

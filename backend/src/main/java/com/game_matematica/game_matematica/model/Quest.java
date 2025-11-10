@@ -4,8 +4,8 @@ package com.game_matematica.game_matematica.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "quest")
-public class QuestModel {
+@Table(name = "quests")
+public class Quest {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,10 +14,10 @@ public class QuestModel {
     private int id_Repost;
 
 
-    public QuestModel() {
+    public Quest() {
     }
 
-    public QuestModel(Long id, String pergunta, int id_Repost) {
+    public Quest(Long id, String pergunta, int id_Repost) {
         this.id = id;
         Pergunta = pergunta;
         this.id_Repost = id_Repost;

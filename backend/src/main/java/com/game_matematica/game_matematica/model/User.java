@@ -4,8 +4,8 @@ package com.game_matematica.game_matematica.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "user")
-public class UserModel {
+@Table(name = "users")
+public class User {
 
 
     @Id
@@ -15,14 +15,14 @@ public class UserModel {
     private String email;
     private String password;
 
-    public UserModel(Long id, String name, String email, String password) {
+    public User(Long id, String name, String email, String password) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.password = password;
     }
 
-    public UserModel() {
+    public User() {
 
     }
 

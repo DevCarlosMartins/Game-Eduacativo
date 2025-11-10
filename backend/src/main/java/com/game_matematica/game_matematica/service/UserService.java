@@ -1,9 +1,9 @@
 package com.game_matematica.game_matematica.service;
 
 import com.game_matematica.game_matematica.dto.LoginRequest;
-import com.game_matematica.game_matematica.model.UserModel;
+import com.game_matematica.game_matematica.model.User;
 import com.game_matematica.game_matematica.repository.UserRepository;
-import jakarta.persistence.EntityNotFoundException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -14,27 +14,31 @@ import java.util.Optional;
 @Service
 public class UserService {
 
+    private final UserRepository userRepository;
 
-    private UserRepository userRepository;
+    @Autowired
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     // Mostra todos os User
-    public List<UserModel> listarUsers(){
+    public List<User> listarUsers(){
 
         return userRepository.findAll();
     }
 
     // Mostra User
-    public Optional<UserModel> listarUserId(Long id){
+    public Optional<User> listarUserId(Long id){
 
         return userRepository.findById(id);
 
     }
 
-    public UserModel criarUser(UserModel userModel){
-        return userRepository.save(userModel);
+    public User criarUser(User user){
+        return userRepository.save(user);
     }
 
-    public UserModel login(LoginRequest user) {
+    public User login(LoginRequest user) {
         return userRepository.findByEmail(user.email())
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Email not found"));
     }

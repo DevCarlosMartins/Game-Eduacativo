@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "answers")
-public class AnswersModel {
+public class Answer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,10 +15,10 @@ public class AnswersModel {
 
     private String desc;
 
-    public AnswersModel() {
+    public Answer() {
     }
 
-    public AnswersModel(int idQuest, Long id, String desc) {
+    public Answer(int idQuest, Long id, String desc) {
         this.idQuest = idQuest;
         this.id = id;
         this.desc = desc;
