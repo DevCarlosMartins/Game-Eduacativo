@@ -11,16 +11,16 @@ public class Quest {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String Pergunta;
-    private int id_Repost;
+    private int answer_id;
 
 
     public Quest() {
     }
 
-    public Quest(Long id, String pergunta, int id_Repost) {
+    public Quest(Long id, String pergunta, int answer_id) {
         this.id = id;
         Pergunta = pergunta;
-        this.id_Repost = id_Repost;
+        this.answer_id = answer_id;
     }
 
     public Long getId() {
@@ -39,11 +39,11 @@ public class Quest {
         Pergunta = pergunta;
     }
 
-    public int getId_Repost() {
-        return id_Repost;
+    public int getAnswer_id() {
+        return answer_id;
     }
 
-    public void setId_Repost(int id_Repost) {
-        this.id_Repost = id_Repost;
+    public void setAnswer_id(int answer_id) {
+        this.answer_id = answer_id;
     }
 }
